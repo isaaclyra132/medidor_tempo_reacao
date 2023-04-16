@@ -61,14 +61,13 @@ function resetGame() {
   hits = [];
   gameState = "start";
 }
-
 function keyPressed() {
   if (gameState === "start") {
     gameState = "playing";
   } else if (gameState === "playing") {
     if (balls.length > 0) {
       let ball = balls[0];
-      if (keyIsPressed && key === ball.color.charAt(0)) {
+      if (keyIsDown(ball.color.charAt(0))) {
         score++;
         hits.push(true);
       } else {
@@ -108,5 +107,9 @@ class Ball {
         balls.splice(index, 1);
       }
     }
+  }
+
+  isDone() {
+    return this.isDone;
   }
 }
